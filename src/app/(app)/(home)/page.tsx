@@ -10,5 +10,5 @@ export default async function Home() {
     collection: "categories",
   });
 
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return <div>{JSON.stringify(data, null, 2)} yes</div>;
 }
