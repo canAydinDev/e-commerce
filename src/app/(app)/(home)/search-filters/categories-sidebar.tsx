@@ -42,7 +42,9 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
   const handleCategoryClick = (category: CategoriesGetManyOutput[1]) => {
     // Doğru: hem kontrol hem kullanım aynı key üzerinden
     if (category.subcategories && category.subcategories.length > 0) {
-      setParentCategories(category.subcategories as CategoriesGetManyOutput);
+      setParentCategories(
+        category.subcategories as unknown as CategoriesGetManyOutput
+      );
       setSelectedCategories(category);
     } else {
       if (parentCategories && selectedCategory) {
@@ -66,7 +68,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
     }
   };
 
-  const backgroundColor = selectedCategory?.color || "white";
+  const backgroundColor = selectedCategory?.color || "#EDE8F5";
 
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
@@ -84,7 +86,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
           {parentCategories && (
             <button
               onClick={handleBackClick}
-              className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
+              className="w-full text-left p-4 hover:bg-[#ADBBDA] hover:text-white flex items-center text-base font-medium"
             >
               <ChevronLeftIcon className="size-4 mr-2" />
               Geri
@@ -94,7 +96,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
             <button
               key={category.slug}
               onClick={() => handleCategoryClick(category)}
-              className="w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center text-base font-medium cursor-pointer"
+              className="w-full text-left p-4 hover:bg-[#ADBBDA] hover:text-white flex justify-between items-center text-base font-medium cursor-pointer"
             >
               {category.name}
               {category.subcategories && category.subcategories.length > 0 && (

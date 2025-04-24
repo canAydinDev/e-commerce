@@ -22,7 +22,7 @@ export const Categories = ({ data }: CategoriesProps) => {
   const [isAnyHovered, setIsAnyHovered] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const activeCategory = "all";
+  const activeCategory = "01-all";
   const activeCategoryIndex = data.findIndex(
     (cat) => cat.slug === activeCategory
   );
@@ -104,10 +104,10 @@ export const Categories = ({ data }: CategoriesProps) => {
         <div ref={viewAllRef} className="shrink-0">
           <Button
             className={cn(
-              "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-white hover:border-primary text-black",
+              "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-[#EDE8F5] hover:border-primary text-black",
               isActiveCategoryHidden &&
                 !isAnyHovered &&
-                "bg-white border-primary"
+                "bg-[#EDE8F5] border-primary"
             )}
             onClick={() => setIsSidebarOpen(true)}
           >

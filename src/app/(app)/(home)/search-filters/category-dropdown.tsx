@@ -45,10 +45,10 @@ export const CategoryDropdown = ({
         <Button
           variant="elevated"
           className={cn(
-            "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-white hover:border-primary text-black",
-            isActive && !isNavigationHovered && "bg-white border-primary",
+            "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-[#EDE8F5] hover:border-primary text-black",
+            isActive && !isNavigationHovered && "bg-[#EDE8F5] border-primary",
             isOpen &&
-              "bg-white border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[4px] -translate-y-[4px] "
+              "bg-[#EDE8F5] border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[4px] -translate-y-[4px] "
           )}
         >
           {category.name}

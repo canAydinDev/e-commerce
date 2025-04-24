@@ -23,7 +23,7 @@ const Layout = async ({ children }: LayoutProps) => {
           <SearchFilters />
         </Suspense>
       </HydrationBoundary>
-      <div className="flex-1 bg-[#F4F4F0      ]">{children}</div>
+      <div className="flex-1 bg-[#EDE8F5]">{children}</div>
       <Footer />
     </div>
   );
