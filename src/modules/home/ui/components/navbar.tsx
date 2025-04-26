@@ -7,10 +7,10 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { NavbarSidebar } from "./navbar-sidebar";
 import { MenuIcon } from "lucide-react";
 import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
+import { NavbarSidebar } from "./navbar-sidebar";
 
 const poppins = Poppins({
   subsets: ["latin"],

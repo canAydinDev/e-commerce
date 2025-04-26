@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { useDropdownPosition } from "./use-dropdown-position";
 import { SubcategoryMenu } from "./subcategory-menu";
 import { CategoriesGetManyOutput } from "@/modules/categories/types";
+import { useRouter } from "next/navigation";
 
 interface Props {
   category: CategoriesGetManyOutput[1];
@@ -18,6 +19,7 @@ export const CategoryDropdown = ({
   isActive,
   isNavigationHovered,
 }: Props) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { getDropdownPosition } = useDropdownPosition(dropdownRef);
@@ -32,6 +34,9 @@ export const CategoryDropdown = ({
     setIsOpen(false);
   };
 
+  const handleClick = () => {
+    router.push(`/${category.slug}`);
+  };
   const dropdownPosition = getDropdownPosition();
 
   return (
@@ -44,6 +49,7 @@ export const CategoryDropdown = ({
       <div className="relative">
         <Button
           variant="elevated"
+          onClick={handleClick}
           className={cn(
             "h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-[#EDE8F5] hover:border-primary text-black",
             isActive && !isNavigationHovered && "bg-[#EDE8F5] border-primary",
