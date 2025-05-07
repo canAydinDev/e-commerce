@@ -42,9 +42,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
   const handleCategoryClick = (category: CategoriesGetManyOutput[1]) => {
     // Doğru: hem kontrol hem kullanım aynı key üzerinden
     if (category.subcategories && category.subcategories.length > 0) {
-      setParentCategories(
-        category.subcategories as unknown as CategoriesGetManyOutput
-      );
+      setParentCategories(category.subcategories as CategoriesGetManyOutput);
       setSelectedCategories(category);
     } else {
       if (parentCategories && selectedCategory) {
