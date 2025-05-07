@@ -9,26 +9,24 @@ export const productsRouter = createTRPCRouter({
     .input(
       z.object({
         category: z.string().nullable().optional(),
+        minPrice: z.string().nullable().optional(),
+        maxPrice: z.string().nullable().optional(),
       })
     )
     .query(async ({ ctx, input }) => {
-      if (!input.category || input.category === "favicon.ico") {
-        // favicon.ico gibi anlamsız category varsa direkt boş veri dönelim
-        return {
-          docs: [],
-          totalDocs: 0,
-          page: 1,
-          limit: 10,
-          totalPages: 0,
-          pagingCounter: 0,
-          hasPrevPage: false,
-          hasNextPage: false,
-          prevPage: null,
-          nextPage: null,
+      const where: Where = {};
+
+      if (input.minPrice) {
+        where.price = {
+          greater_than_equal: input.minPrice,
         };
       }
 
-      const where: Where = {};
+      if (input.maxPrice) {
+        where.price = {
+          less_than_equal: input.maxPrice,
+        };
+      }
 
       if (input.category) {
         const categoriesData = await ctx.db.find({
@@ -60,11 +58,11 @@ export const productsRouter = createTRPCRouter({
               (subcategory) => subcategory.slug
             )
           );
-        }
 
-        where["category.slug"] = {
-          in: [parentCategory.slug, ...subCategoriesSlugs],
-        };
+          where["category.slug"] = {
+            in: [parentCategory.slug, ...subCategoriesSlugs],
+          };
+        }
       }
 
       const data = await ctx.db.find({
