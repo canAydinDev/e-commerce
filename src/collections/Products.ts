@@ -35,6 +35,13 @@ export const Products: CollectionConfig = {
       hasMany: false,
     },
     {
+      name: "tags",
+      label: "Etiket",
+      type: "relationship",
+      relationTo: "tags",
+      hasMany: true,
+    },
+    {
       name: "image",
       label: "Ürün Görseli",
       type: "upload",
